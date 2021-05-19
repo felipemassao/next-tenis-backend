@@ -1,0 +1,153 @@
+div.area_logo {
+  background-color: #3e3e3e;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+img.logo {
+  margin: 0 auto;
+  max-height: 10vh;
+}
+
+div.barra_logo {
+  width: 90%;
+}
+
+div.barra_restrito {
+  width: 10%;
+}
+
+img.restrito {
+  margin: 0 auto;
+  max-height: 8vh;
+}
+
+div.tela_area_central {
+  max-width: 100vw;
+  max-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+div.area_central {
+  padding: 10px;
+  width: 100vw;
+  height: 76vh;
+}
+
+div.sobre {
+  padding: 10px;
+  width: 100vw;
+  height: 100vh;
+}
+
+div.sobre_texto {
+  padding: 20px;
+  max-width: 100vw;
+  height: 30vh;
+}
+
+div.sobre_texto_titulo {
+  height: 10vh;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+div.sobre_texto_detalhe {
+  height: 30vh;
+  font-size: 1.1rem;
+}
+
+div.detalhe_sobre_pai {
+  margin: 10px auto;
+  width: 98vw;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+}
+
+div.detalhe_sobre_filho {
+  width: 31vw;
+  padding: 5px;
+  margin: 5px;
+  background-color: #f8f9fa;
+  font-size: 0.8rem;
+}
+
+div.rodape {
+  font-size: 0.7rem;
+  width: 100vw;
+  height: 5vh;
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.loginCadastro_credenciais {
+  padding: 10px;
+  width: 40vw;
+  height: 76vh;
+}
+
+img.contatos_sobre {
+  width: 100vw;
+}
+
+div.container_pai_produtos {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+}
+
+div.container_filho_produtos {
+  margin: 10px;
+  width: 20vw;
+  height: 60vh;
+  background-color: #cccccc;
+}
+
+.card-foto {
+  padding: 10px;
+  width: 100%;
+}
+
+.card-texto {
+  padding: 10px;
+  font-size: 0.8rem;
+}
+
+img.foto_produto {
+  width: 100%;
+}
+
+div.texto_produto_titulo {
+  font-weight: 500;
+}
+
+.carousel-img {
+  height: 50vh;
+}
+
+div.form-signin {
+  padding: 30px;
+  height: 75vh;
+}
+
+.pai {
+  display: flex;
+  align-items: center;
+}
+.descricao {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+em {
+  color: green;
+  font-weight: bold;
+}
+
+.titulo1 {
+  font-weight: bold;
+}
