@@ -44,7 +44,31 @@ const entrar = async (req, res, next) => {
   }
 };
 
+
+const checkDupNameEmail = async (req, res, next) => {
+  try {
+    const { username, email } = req.body;
+
+    const usuario = await Usuarios.procurar(username);
+    if (usuario) {
+      throw Error("Username já está em uso!");
+    }
+
+    const mail = await Usuarios.procurarEmail(email);
+    if (mail) {
+      throw Error("E-mail já está em uso!");
+    }
+
+    next();
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+
 module.exports = {
   entrar,
   novoCadastro,
+  checkDupNameEmail
 };

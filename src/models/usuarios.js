@@ -20,7 +20,17 @@ const procurar = async (username) => {
     return usuario;
 };
 
+const procurarEmail = async (email) => {
+    const mail = await Usuario.findOne({ 
+        where: { email },
+        raw: true
+    });
+    console.log(mail);
+    return mail;
+};
+
 module.exports = {
     cadastrar,
-    procurar
+    procurar,
+    procurarEmail
 }
