@@ -1,35 +1,44 @@
-const { validationResult } = require('express-validator');
+const Usuarios = require('../models/usuarios');
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
-const novoCadastro = (req, res, next) => {
+const novoCadastro = async (req, res, next) => {
+  const { username, email, password } = req.body;
   try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      throw new Error('Erro de validação');
-    }
-
-    const usuarioDoFormulario = {
-      email: req.body.email,
-      password: req.body.password,
-      confirmPassword: req.body['confirm-password']
-    };
-
-    const usuarioCadastrado = model.cadastrarUsuario(usuarioDoFormulario);
-    res.status(201).json(usuarioCadastrado);
+    const usuario = await Usuarios.cadastrar(username, email, password);
+    res.status(201).json({ usuario, message: "Usuario cadastrado" });
   } catch (error) {
     next(error);
   }
 };
 
-const entrar = (req, res, next) => {
+const entrar = async (req, res, next) => {
   try {
-    const usuarioDoFormulario = {
-      email: req.body.email,
-      password: req.body.password
-    };
+    const { username, password } = req.body;
 
-    if (model.validarEntrada(usuarioDoFormulario)) {
-      // res.render('login/entrar');
+    const usuario = await Usuarios.procurar(username);
+    if (!usuario) {
+      throw Error("Usuário não encontrado!");
     }
+
+    const passwordIsValid = bcrypt.compareSync(password, usuario.password);
+    if (!passwordIsValid) {
+      throw Error("Senha incorreta!")
+    }
+
+    const token = jwt.sign(
+      { id: usuario.id },
+      process.env.JWT_SECRET,
+      { expiresIn: 86400 } //24hrs
+    );
+
+    res.json({
+      id: usuario.id,
+      username: usuario.username,
+      email: usuario.email,
+      accessToken: token
+    });
+
   } catch (error) {
     next(error);
   }

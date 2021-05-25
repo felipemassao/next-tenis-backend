@@ -3,9 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
-const usersRouter = require('./routes/users');
-const produtosRouter = require('./routes/produtos');
+require('dotenv').config()
 
 const app = express();
 
@@ -15,8 +13,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/users', usersRouter);
-app.use('/produtos', produtosRouter);
+app.use('/users', require('./routes/users'));
+app.use('/produtos', require('./routes/produtos'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

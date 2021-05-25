@@ -20,4 +20,3 @@ module.exports = {
     listarProdutos,
     buscaProduto
 }
-
