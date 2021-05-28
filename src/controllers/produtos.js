@@ -19,29 +19,7 @@ const buscaProduto = async (req, res, next) => {
     }
 }
 
-const inserirProdutos = async (req, res, next) => {
-    try {
-        const novo_produto = {
-            descricao: 'Nike Blaster',
-            marca_id: 1,
-            modelo: 'Blaster',
-            cor_id: 1,
-            tamanho: '38',
-            genero: 'Masculino',
-            estilo_id: 1,
-            preco: 150.00,
-            createdAt: new Date(),
-            updatedAt: new Date()
-    
-        }
-        const produtos = await Produtos.create(novo_produto);
-        res.status(201).json(produtos);
-    } catch (error) {
-        next(error);
-    }
-}
-
-const inserirProdutosForms = async (req, res, next) => {
+const inserirProduto = async (req, res, next) => {
     try {
         const { descricao, marca_id, cor_id, modelo, tamanho, genero, estilo_id, preco } = req.body;
     
@@ -55,9 +33,9 @@ const inserirProdutosForms = async (req, res, next) => {
             estilo_id,
             preco,
             createdAt: new Date(),
-            updatedAt: new Date()    
+            updatedAt: new Date()
         }
-        const produtos = await Produtos.create(novo_produto);
+        const produtos = await Produtos.inserirProduto(novo_produto);
         res.status(201).json(produtos);
     } catch (error) {
         next(error);
@@ -80,11 +58,7 @@ const atualizarProduto = async (req, res, next) => {
             preco,
             updatedAt: new Date()
         }
-        const produtos = await Produtos.update(produto_alterado, {
-            where: {
-                id: id
-            }
-        });
+        const produtos = await Produtos.atualizarProduto(produto_alterado, id);
         res.json(produtos);
     } catch (error) {
         next(error);
@@ -95,9 +69,7 @@ const deletarProduto = async (req, res, next) => {
     try {
         const { id } = req.params
     
-        const produtos = await Produtos.destroy({
-            where: { id }
-        });
+        const produtos = await Produtos.deletarProduto(id);
         res.json(produtos);
     } catch (error) {
         next(error);
@@ -107,8 +79,7 @@ const deletarProduto = async (req, res, next) => {
 module.exports = {
     listarProdutos,
     buscaProduto,
-    inserirProdutos,
-    inserirProdutosForms,
+    inserirProduto,
     atualizarProduto,
     deletarProduto
 }

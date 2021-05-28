@@ -16,7 +16,29 @@ const buscaProduto = async (id) => {
     return produtos;
 }
 
+const inserirProduto = async (novo_produto) => {
+    return await Produtos.create(novo_produto);
+};
+
+const atualizarProduto = async (produto_alterado, id) => {
+
+    return await Produtos.update(produto_alterado, {
+        where: {
+            id
+        }
+    });
+};
+
+const deletarProduto = async (id) => {
+    return await Produtos.destroy({
+        where: { id }
+    });
+};
+
 module.exports = {
     listarProdutos,
-    buscaProduto
+    buscaProduto,
+    inserirProduto,
+    atualizarProduto,
+    deletarProduto
 }
