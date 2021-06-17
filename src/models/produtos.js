@@ -1,14 +1,18 @@
-const { Produtos } = require('../db/models');
+const { Produtos, Cores, Estilos, Fotos, Marcas } = require('../db/models');
 
 const listarProdutos = async (req, res) => {
-    const produtos = await Produtos.findAll({ raw: true });
+    const produtos = await Produtos.findAll({
+        raw: true,
+        include: [Cores, Estilos, Fotos, Marcas] 
+    });
     return produtos;
 }
 
 const buscaProduto = async (id) => {
     const produtos = await Produtos.findOne({
         where: { id },
-        raw: true
+        raw: true,
+        include: [Cores, Estilos, Fotos, Marcas]
     });
     if (!produtos) {
         throw new Error(`Produto não existe`);
