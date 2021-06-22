@@ -22,7 +22,7 @@ const buscaProduto = async (req, res, next) => {
 const inserirProduto = async (req, res, next) => {
     try {
         const { descricao, marca_id, cor_id, modelo, tamanho, genero, estilo_id, preco } = req.body;
-    
+
         const novo_produto = {
             descricao,
             marca_id,
@@ -46,7 +46,7 @@ const atualizarProduto = async (req, res, next) => {
     try {
         const { descricao, marca_id, cor_id, modelo, tamanho, genero, estilo_id, preco } = req.body;
         const { id } = req.params
-    
+
         const produto_alterado = {
             descricao,
             marca_id,
@@ -68,7 +68,7 @@ const atualizarProduto = async (req, res, next) => {
 const deletarProduto = async (req, res, next) => {
     try {
         const { id } = req.params
-    
+
         const produtos = await Produtos.deletarProduto(id);
         res.json(produtos);
     } catch (error) {

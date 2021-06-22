@@ -2,8 +2,8 @@ const { Produtos, Cores, Estilos, Fotos, Marcas } = require('../db/models');
 
 const listarProdutos = async (req, res) => {
 
-const produtos = await Produtos.findAll({ 
-        raw: true, 
+    const produtos = await Produtos.findAll({
+        raw: true,
         include: [Cores, Estilos, Fotos, Marcas]
     });
     return produtos;
