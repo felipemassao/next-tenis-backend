@@ -2,11 +2,11 @@ const { Produtos, Cores, Estilos, Fotos, Marcas } = require('../db/models');
 
 const listarProdutos = async (req, res) => {
 
-    const produtos = await Produtos.findAll({ 
-        raw: true, 
+    const produtos = await Produtos.findAll({
+        raw: true,
         include: [Cores, Estilos, Marcas]
     });
-    for(let i = 0; i < produtos.length; i++){
+    for (let i = 0; i < produtos.length; i++) {
         const fotos = await Fotos.findAll({
             where: {
                 produto_id: produtos[i].id
@@ -22,11 +22,18 @@ const buscaProduto = async (id) => {
     const produtos = await Produtos.findOne({
         where: { id },
         raw: true,
-        include: [Cores, Estilos, Fotos, Marcas]
+        include: [Cores, Estilos, Marcas]
     });
     if (!produtos) {
         throw new Error(`Produto não existe`);
     }
+    const fotos = await Fotos.findAll({
+        where: {
+            produto_id: produtos.id
+        },
+        raw: true
+    });
+    produtos.fotos = fotos
     return produtos;
 }
 

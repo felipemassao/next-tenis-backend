@@ -64,6 +64,54 @@ module.exports = {
           preco: 279.90,
           createdAt: new Date(),
           updatedAt: new Date()
+        },
+        {
+          descricao: 'Puma St Runner V2 Nl Feminino Casual',
+          marca_id: 6,
+          modelo: 'St Runner V2 Nl',
+          cor_id: 6,
+          tamanho: '34',
+          genero: 'Feminino',
+          estilo_id: 1,
+          preco: 279.90,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          descricao: 'Puma St Runner V2 Nl Feminino Casual',
+          marca_id: 1,
+          modelo: 'St Runner V2 Nl',
+          cor_id: 7,
+          tamanho: '34',
+          genero: 'Feminino',
+          estilo_id: 2,
+          preco: 279.90,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          descricao: 'Puma St Runner V2 Nl Feminino Casual',
+          marca_id: 2,
+          modelo: 'St Runner V2 Nl',
+          cor_id: 8,
+          tamanho: '34',
+          genero: 'Feminino',
+          estilo_id: 3,
+          preco: 279.90,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          descricao: 'Puma St Runner V2 Nl Feminino Casual',
+          marca_id: 3,
+          modelo: 'St Runner V2 Nl',
+          cor_id: 8,
+          tamanho: '34',
+          genero: 'Feminino',
+          estilo_id: 4,
+          preco: 279.90,
+          createdAt: new Date(),
+          updatedAt: new Date()
         }
 
 
