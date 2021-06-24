@@ -66,9 +66,18 @@ const checkDupNameEmail = async (req, res, next) => {
   }
 };
 
+const listarUsuarios = async (req, res, next) => {
+  try {
+      const usuarios = await Usuarios.listarUsuarios();
+      res.json(usuarios);
+  } catch (error) {
+      next(error);
+  }
+};
 
 module.exports = {
   entrar,
   novoCadastro,
-  checkDupNameEmail
+  checkDupNameEmail,
+  listarUsuarios
 };
