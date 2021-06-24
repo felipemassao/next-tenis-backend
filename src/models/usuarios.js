@@ -29,8 +29,16 @@ const procurarEmail = async (email) => {
     return mail;
 };
 
+const listarUsuarios = async (req, res) => {
+    const usuarios = await Usuario.findAll({
+        raw: true
+    });
+    return usuarios;
+}
+
 module.exports = {
     cadastrar,
     procurar,
-    procurarEmail
+    procurarEmail,
+    listarUsuarios
 }
