@@ -75,9 +75,51 @@ const listarUsuarios = async (req, res, next) => {
   }
 };
 
+const buscaUsuario = async (req, res, next) => {
+  try {
+      const { id } = req.params
+      const usuarios = await Usuarios.buscaUsuario(id);
+      res.json(usuarios);
+  } catch (error) {
+      next(error);
+  }
+}
+
+const atualizarUsuario = async (req, res, next) => {
+  try {
+      const { username, email, password } = req.body;
+      const { id } = req.params
+
+      const usuario_alterado = {
+          username,
+          email,
+          password: bcrypt.hashSync(password, 8),
+          updatedAt: new Date()
+      }
+      const usuarios = await Usuarios.atualizarUsuario(usuario_alterado, id);
+      res.json(usuarios);
+  } catch (error) {
+      next(error);
+  }
+}
+
+const deletarUsuario = async (req, res, next) => {
+  try {
+      const { id } = req.params
+
+      const usuarios = await Usuarios.deletarUsuario(id);
+      res.json(usuarios);
+  } catch (error) {
+      next(error);
+  }
+}
+
 module.exports = {
   entrar,
   novoCadastro,
   checkDupNameEmail,
-  listarUsuarios
+  listarUsuarios,
+  buscaUsuario,
+  atualizarUsuario,
+  deletarUsuario
 };

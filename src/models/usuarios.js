@@ -36,9 +36,38 @@ const listarUsuarios = async (req, res) => {
     return usuarios;
 }
 
+const buscaUsuario = async (id) => {
+    const usuarios = await Usuario.findOne({
+        where: { id },
+        raw: true,
+    });
+    if (!usuarios) {
+        throw new Error(`Usuário não existe`);
+    }
+    return usuarios;
+}
+
+const atualizarUsuario = async (usuario_alterado, id) => {
+    console.log(usuario_alterado)
+    return await Usuario.update(usuario_alterado, {
+        where: {
+            id
+        }
+    });
+};
+
+const deletarUsuario = async (id) => {
+    return await Usuario.destroy({
+        where: { id }
+    });
+};
+
 module.exports = {
     cadastrar,
     procurar,
     procurarEmail,
-    listarUsuarios
+    listarUsuarios,
+    buscaUsuario,
+    atualizarUsuario,
+    deletarUsuario
 }
