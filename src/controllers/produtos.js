@@ -68,7 +68,6 @@ const atualizarProduto = async (req, res, next) => {
 const deletarProduto = async (req, res, next) => {
     try {
         const { id } = req.params
-
         const produtos = await Produtos.deletarProduto(id);
         res.json(produtos);
     } catch (error) {
