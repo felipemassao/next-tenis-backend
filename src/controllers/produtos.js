@@ -1,4 +1,5 @@
 const Produtos = require('../models/produtos');
+const Fotos = require('../models/produtos');
 
 const listarProdutos = async (req, res, next) => {
     try {
@@ -75,10 +76,21 @@ const deletarProduto = async (req, res, next) => {
     }
 }
 
+const deletarProdutoFotos = async (req, res, next) => {
+    try {
+        const { produto_id } = req.params
+        const fotos = await Fotos.deletarProduto(produto_id);
+        res.json(fotos);
+    } catch (error) {
+        next(error);
+    }
+}
+
 module.exports = {
     listarProdutos,
     buscaProduto,
     inserirProduto,
     atualizarProduto,
-    deletarProduto
+    deletarProduto,
+    deletarProdutoFotos
 }
