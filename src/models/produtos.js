@@ -56,10 +56,18 @@ const deletarProduto = async (id) => {
     });
 };
 
+const deletarProdutoFotos = async (produto_id) => {
+    return await Fotos.destroy({
+        where: { produto_id }
+    });
+};
+
+
 module.exports = {
     listarProdutos,
     buscaProduto,
     inserirProduto,
     atualizarProduto,
-    deletarProduto
+    deletarProduto,
+    deletarProdutoFotos
 }
