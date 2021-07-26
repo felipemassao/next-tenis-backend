@@ -62,7 +62,6 @@ const deletarProdutoFotos = async (produto_id) => {
     });
 };
 
-
 module.exports = {
     listarProdutos,
     buscaProduto,
